@@ -113,7 +113,7 @@ var _0xb626 = [
 (function ($) {
 	$(document)[_0xb626[109]](function () {
 		$(_0xb626[10])[_0xb626[9]](function () {
-			$(this)[_0xb626[8]](_0xb626[7])[_0xb626[6]](_0xb626[5])[_0xb626[4]](_0xb626[3])[_0xb626[2]](_0xb626[1]);
+			$(this)[_0xb626[8]](_0xb626[7])[_0xb626[6]](_0xb626[5])[_0xb626[4]](_0xb626[3])[_0xb626[2]]('<span class="arrow"></span>');
 		});
 		$(_0xb626[17])[_0xb626[16]](_0xb626[11], function (_0x6549x2) {
 			_0x6549x2[_0xb626[12]]();
@@ -224,4 +224,41 @@ var _0xb626 = [
 			}, 1000);
 		});
 	});
+})(jQuery);
+
+
+(function($){
+
+	$(document).ready(function(){
+
+	 
+	    $('.freemius-purchase').on('click', function (e) {
+
+	    	var name = $(this).data('name');
+	    	var config = $(this).data('config');
+	    	var handler = FS.Checkout.configure({
+		        plugin_id:  '7555',
+		        plan_id:    '12921',
+		        public_key: 'pk_17ddb093059e9aa6790b5c305fdfb',
+		    });
+
+	        handler.open({
+	            name     : name,
+	            licenses : $('#licenses').val(),
+	            // You can consume the response for after purchase logic.
+	            success  : function (response) {
+	                // alert(response.user.email);
+	                
+	            }
+	        });
+	        e.preventDefault();
+	    });
+
+	    $(document).find('#header .close').on( 'click', function(){
+	    	alert('test');
+	    	$('#overlay').remove();
+	    });
+
+	});
+
 })(jQuery);
