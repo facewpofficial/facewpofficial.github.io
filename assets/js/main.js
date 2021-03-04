@@ -234,17 +234,19 @@ var _0xb626 = [
 	 
 	    $('.freemius-purchase').on('click', function (e) {
 
+
+
 	    	var name = $(this).data('name');
-	    	var config = $(this).data('config');
-	    	var handler = FS.Checkout.configure({
+	    	var default_config = {
 		        plugin_id:  '7555',
 		        plan_id:    '12921',
 		        public_key: 'pk_17ddb093059e9aa6790b5c305fdfb',
-		    });
+		    };
+	    	var config = $(this).data('config');
+	    	var handler = FS.Checkout.configure(config);
 
 	        handler.open({
 	            name     : name,
-	            licenses : $('#licenses').val(),
 	            // You can consume the response for after purchase logic.
 	            success  : function (response) {
 	                // alert(response.user.email);
